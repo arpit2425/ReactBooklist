@@ -1,21 +1,21 @@
-import React, { useState, createContext } from "react";
-export const BookContext = createContext();
-function BookContextProvider(props) {
+import React, { useState, createContext } from 'react'
+export const BookContext = createContext()
+function BookContextProvider (props) {
   const [books, setBooks] = useState([
-    { title: "name of the wind", author: "patrick rothfuss", id: 1 },
-    { title: "the final empire", author: "brandon sanderson", id: 2 },
-  ]);
+    { title: 'name of the wind', author: 'patrick rothfuss', id: 1 },
+    { title: 'the final empire', author: 'brandon sanderson', id: 2 }
+  ])
   const addBooks = (title, author) => {
-    setBooks([...books, { title, author, id: "4" }]);
-  };
-  const removeBooks = (id) => {
-    setBooks(books.filter((book) => book.id !== id));
-  };
+    setBooks([...books, { title, author, id: '4' }])
+  }
+  const removeBook = id => {
+    setBooks(books.filter(book => book.id !== id))
+  }
   return (
-    <BookContext.Provider value={{ books, addBooks, removeBooks }}>
+    <BookContext.Provider value={{ books, addBooks, removeBook }}>
       {props.children}
     </BookContext.Provider>
-  );
+  )
 }
 
-export default BookContextProvider;
+export default BookContextProvider
